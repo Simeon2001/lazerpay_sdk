@@ -57,7 +57,7 @@ class Lazerpay:
         respond = res.json()
         return respond
 
-    def transfer(self, amount, address:str, coin:str, blockchain:str) -> dict:
+    def transfer(self, amount:int, address:str, coin:str, blockchain:str) -> dict:
         """to transfer your stable coin to another address you can do. example: transfer(1000,"0X....","BUSD","BSC blockchain")"""
         url = "https://api.lazerpay.engineering/api/v1/transfer"
         info = {
@@ -85,8 +85,4 @@ class Lazerpay:
         return respond
 
 
-# laz = Lazerpay(secret)
-# print(laz.accepted_coin)
-# print(laz.coin_rate('NGN','DAI'))
-# print(laz.verify('0xEa250dc41851EE6Ee076e5941131754580e91e7a'))
-# print(laz.initialize("simeon","jesusanyasimeon@gmail.com","DAI","USD","4","3EENnJKFnv",False))
+

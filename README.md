@@ -47,3 +47,13 @@
     rate = payment.coin_rate(fiat,coin)
     print(rate)
 --------------------------------
+
+* to transfer your stablecoin to another wallet address :
+---------------------
+    amount = 100
+    the_address = "0xEa...................."
+    coin = "USDT"
+    blockchain = "Binance Smart Chain"
+    trans = payment.transfer(amount,the_address,coin,blockchain)
+    print(trans)
+------------------------------------------
