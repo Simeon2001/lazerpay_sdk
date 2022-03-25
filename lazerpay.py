@@ -63,7 +63,7 @@ class Lazerpay:
         info = {
             "amount": amount,
             "recipient": address,
-            "coin": coin,
+            "token_name": coin,
             "blockchain": blockchain,
         }
 
