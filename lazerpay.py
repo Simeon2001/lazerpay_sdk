@@ -5,13 +5,14 @@ import json
 
 # secret = secret_key
 class Lazerpay:
-    def __init__(self, secret_key:str) -> dict:
+    def __init__(self, public_key:str,secret_key:str) -> dict:
         """put your secret_key here example: Lazerpay("pk_test_.......................")"""
         headers = CaseInsensitiveDict()
         self.headers = headers
 
         headers["Content-Type"] = "application/json"
-        headers["x-api-key"] = "{0}".format(secret_key)
+        headers["x-api-key"] = "{0}".format(public_key)
+        headers["Authorization"] = "Bearer {0}".format(secret_key)
 
     def initialize(
         self,
@@ -63,7 +64,7 @@ class Lazerpay:
         info = {
             "amount": amount,
             "recipient": address,
-            "token_name": coin,
+            "coin": coin,
             "blockchain": blockchain,
         }
 
@@ -76,13 +77,17 @@ class Lazerpay:
     def coin_rate(self, currency:str, coin:str) -> dict:
         """to get rate of coin to fiat. example: coin_rate("USD","DAI")"""
         url = (
-            "https://api.lazerpay.engineering/api/v1/rate?currency={0}&coin={1}".format(
-                currency, coin
+            "https://api.lazerpay.engineering/api/v1/rate?coin={0}&currency={1}".format(
+                coin, currency
             )
         )
         res = requests.get(url, headers=self.headers)
         respond = res.json()
         return respond
 
-
-
+    def get_paylinks(self) -> dict:
+        
+        url = "https://api.lazerpay.engineering/api/v1/payment-links"
+        res = requests.get(url, headers=self.headers)
+        respond = res.json()
+        return respond
