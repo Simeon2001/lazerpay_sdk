@@ -6,7 +6,7 @@ import json
 # secret = secret_key
 class Lazerpay:
     def __init__(self, public_key:str,secret_key:str) -> dict:
-        """put your secret_key here example: Lazerpay("pk_test_.......................")"""
+        """put your public_key,secret_key here example: Lazerpay("pk_test_.......................","sk_test............................")"""
         headers = CaseInsensitiveDict()
         self.headers = headers
 
@@ -24,7 +24,7 @@ class Lazerpay:
         reference:str,
         accept_partial_payment:bool,
     ) -> dict:
-        """to generate bsc address for your customer to pay you, you need to put the following details. example:initialie("sim","sim@sim.com","BUSD","USD","100","RE54646",False)"""
+        """to generate bsc address for your customer to pay you, you need to put the following details. example:initialize("sim","sim@sim.com","BUSD","USD","100","RE54646",False)"""
         url = "https://api.lazerpay.engineering/api/v1/transaction/initialize"
         info = {
             "customer_name": customer_name,
@@ -91,3 +91,5 @@ class Lazerpay:
         res = requests.get(url, headers=self.headers)
         respond = res.json()
         return respond
+
+    

@@ -9,12 +9,13 @@
 
 ----------------------------------------
 
-* then you can call the class(Lazerpay) and add your secret key:
+* then you can call the class(Lazerpay) and add your public key first and your secret key:
 
 -------------------------------
-    secret = "pk_test_.................."
+    public = "pk_test_.................."
+    secret = "sk_test_ ...................."
 
-    payment = Lazerpay(secret)
+    payment = Lazerpay(public,secret)
 
 ------------------------------------------------
 
