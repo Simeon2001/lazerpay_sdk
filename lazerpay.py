@@ -92,4 +92,8 @@ class Lazerpay:
         respond = res.json()
         return respond
 
-    
+    def fetch_paylink(self,id) -> dict:
+        url = "https://api.lazerpay.engineering/api/v1/payment-links/{0}".format(id)
+        res = requests.get(url, headers=self.headers)
+        respond = res.json()
+        return respond
